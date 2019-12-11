@@ -1,3 +1,4 @@
+package Objects;
 import com.google.gson.*;
 
 class UserDescription implements Comparable {
