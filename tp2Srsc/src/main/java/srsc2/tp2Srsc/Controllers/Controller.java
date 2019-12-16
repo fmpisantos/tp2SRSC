@@ -1,5 +1,8 @@
 package srsc2.tp2Srsc.Controllers;
 
+import com.google.gson.JsonObject;
+import org.springframework.web.bind.annotation.RequestBody;
+import srsc2.tp2Srsc.Objects.ServerActions;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -8,6 +11,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class Controller {
+
+    ServerActions sa =  new ServerActions();
+
     @RequestMapping(value = "/teste", method = RequestMethod.GET, produces = "application/json")
     public ResponseEntity<?> test() {
         return ResponseEntity.status(HttpStatus.OK).body("Running..");
@@ -24,9 +30,15 @@ public class Controller {
          "result": <user id>
         }
     */
+
+    public ResponseEntity response(JsonObject body){
+        String resp = sa.executeCommand(body);
+        boolean error = resp.contains("\"error\":");
+        return ResponseEntity.status(!error?HttpStatus.OK:HttpStatus.EXPECTATION_FAILED).body(sa.executeCommand(body));
+    }
     @RequestMapping(value = "/create", method = RequestMethod.POST, produces = "application/json")
-    public ResponseEntity<?> create() {
-        return ResponseEntity.status(HttpStatus.OK).body("Running..");
+    public ResponseEntity<?> create(@RequestBody JsonObject body) {
+        return response(body);
     }
 
     /*
@@ -41,8 +53,8 @@ public class Controller {
         }
     */
     @RequestMapping(value = "/list", method = RequestMethod.POST, produces = "application/json")
-    public ResponseEntity<?> list() {
-        return ResponseEntity.status(HttpStatus.OK).body("Running..");
+    public ResponseEntity<?> list(@RequestBody JsonObject body){
+        return response(body);
     }
     /*
         Request:
@@ -56,8 +68,8 @@ public class Controller {
         }
     */
     @RequestMapping(value = "/new", method = RequestMethod.POST, produces = "application/json")
-    public ResponseEntity<?> newUser() {
-        return ResponseEntity.status(HttpStatus.OK).body("Running..");
+    public ResponseEntity<?> newUser(@RequestBody JsonObject body) {
+        return response(body);
     }
     /*
         Request:
@@ -71,8 +83,8 @@ public class Controller {
         }
     */
     @RequestMapping(value = "/all", method = RequestMethod.POST, produces = "application/json")
-    public ResponseEntity<?> all() {
-        return ResponseEntity.status(HttpStatus.OK).body("Running..");
+    public ResponseEntity<?> all(@RequestBody JsonObject body) {
+        return response(body);
     }
 
     /*
@@ -90,8 +102,8 @@ public class Controller {
         }
     */
     @RequestMapping(value = "/send", method = RequestMethod.POST, produces = "application/json")
-    public ResponseEntity<?> send() {
-        return ResponseEntity.status(HttpStatus.OK).body("Running..");
+    public ResponseEntity<?> send(@RequestBody JsonObject body) {
+        return response(body);
     }
 
     /*
@@ -106,8 +118,8 @@ public class Controller {
         The server will not reply to this message, nor will it validate its correctness.
     */
     @RequestMapping(value = "/receipt", method = RequestMethod.POST, produces = "application/json")
-    public ResponseEntity<?> receipt() {
-        return ResponseEntity.status(HttpStatus.OK).body("Running..");
+    public ResponseEntity<?> receipt(@RequestBody JsonObject body) {
+        return response(body);
     }
     /*
         Request:
@@ -131,7 +143,7 @@ public class Controller {
         }
     */
     @RequestMapping(value = "/status", method = RequestMethod.POST, produces = "application/json")
-    public ResponseEntity<?> status() {
-        return ResponseEntity.status(HttpStatus.OK).body("Running..");
+    public ResponseEntity<?> status(@RequestBody JsonObject body) {
+        return response(body);
     }
 }
