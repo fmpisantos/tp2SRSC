@@ -123,7 +123,7 @@ public class Controller {
     */
     
     @RequestMapping(value = "/recv", method = RequestMethod.POST, produces = "application/json")
-    public ResponseEntity<?> send(@RequestBody String body) {
+    public ResponseEntity<?> recv(@RequestBody String body) {
         return response(body);
     }
     
