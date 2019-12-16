@@ -1,5 +1,6 @@
 package srsc2.tp2Srsc.Controllers;
 
+import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import org.springframework.web.bind.annotation.RequestBody;
 import srsc2.tp2Srsc.Objects.ServerActions;
@@ -31,13 +32,16 @@ public class Controller {
         }
     */
 
-    public ResponseEntity response(JsonObject body){
-        String resp = sa.executeCommand(body);
+    public ResponseEntity response(String body){
+        Gson gson = new Gson();
+        JsonObject jsonObject = gson.fromJson(body, JsonObject.class);
+        System.out.println(jsonObject.toString());
+        String resp = sa.executeCommand(jsonObject);
         boolean error = resp.contains("\"error\":");
-        return ResponseEntity.status(!error?HttpStatus.OK:HttpStatus.EXPECTATION_FAILED).body(sa.executeCommand(body));
+        return ResponseEntity.status(!error?HttpStatus.OK:HttpStatus.EXPECTATION_FAILED).body(resp);
     }
     @RequestMapping(value = "/create", method = RequestMethod.POST, produces = "application/json")
-    public ResponseEntity<?> create(@RequestBody JsonObject body) {
+    public ResponseEntity<?> create(@RequestBody String body) {
         return response(body);
     }
 
@@ -53,7 +57,7 @@ public class Controller {
         }
     */
     @RequestMapping(value = "/list", method = RequestMethod.POST, produces = "application/json")
-    public ResponseEntity<?> list(@RequestBody JsonObject body){
+    public ResponseEntity<?> list(@RequestBody String body){
         return response(body);
     }
     /*
@@ -68,7 +72,7 @@ public class Controller {
         }
     */
     @RequestMapping(value = "/new", method = RequestMethod.POST, produces = "application/json")
-    public ResponseEntity<?> newUser(@RequestBody JsonObject body) {
+    public ResponseEntity<?> newUser(@RequestBody String body) {
         return response(body);
     }
     /*
@@ -83,7 +87,7 @@ public class Controller {
         }
     */
     @RequestMapping(value = "/all", method = RequestMethod.POST, produces = "application/json")
-    public ResponseEntity<?> all(@RequestBody JsonObject body) {
+    public ResponseEntity<?> all(@RequestBody String body) {
         return response(body);
     }
 
@@ -102,7 +106,7 @@ public class Controller {
         }
     */
     @RequestMapping(value = "/send", method = RequestMethod.POST, produces = "application/json")
-    public ResponseEntity<?> send(@RequestBody JsonObject body) {
+    public ResponseEntity<?> send(@RequestBody String body) {
         return response(body);
     }
 
@@ -118,7 +122,7 @@ public class Controller {
         The server will not reply to this message, nor will it validate its correctness.
     */
     @RequestMapping(value = "/receipt", method = RequestMethod.POST, produces = "application/json")
-    public ResponseEntity<?> receipt(@RequestBody JsonObject body) {
+    public ResponseEntity<?> receipt(@RequestBody String body) {
         return response(body);
     }
     /*
@@ -143,7 +147,7 @@ public class Controller {
         }
     */
     @RequestMapping(value = "/status", method = RequestMethod.POST, produces = "application/json")
-    public ResponseEntity<?> status(@RequestBody JsonObject body) {
+    public ResponseEntity<?> status(@RequestBody String body) {
         return response(body);
     }
 }
