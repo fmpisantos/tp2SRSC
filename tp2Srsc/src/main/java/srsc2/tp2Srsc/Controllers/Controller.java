@@ -121,6 +121,12 @@ public class Controller {
         Response:
         The server will not reply to this message, nor will it validate its correctness.
     */
+    
+    @RequestMapping(value = "/recv", method = RequestMethod.POST, produces = "application/json")
+    public ResponseEntity<?> send(@RequestBody String body) {
+        return response(body);
+    }
+    
     @RequestMapping(value = "/receipt", method = RequestMethod.POST, produces = "application/json")
     public ResponseEntity<?> receipt(@RequestBody String body) {
         return response(body);

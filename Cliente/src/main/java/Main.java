@@ -71,6 +71,53 @@ public class Main {
                         e.printStackTrace();
                     }
                     break;
+                case 3:
+                	System.out.println("Enter user id:");
+                	id = in.nextInt();in.nextLine();
+                	body.addProperty("type", "new");
+                	body.addProperty("id", id);
+                	req = HttpRequest.newBuilder().POST(HttpRequest.BodyPublishers.ofString(body.toString())).uri(new URI(URI + "/new")).setHeader("Content-type", "application/json").build();
+                	try {
+                        HttpResponse response = httpClient.send(req, HttpResponse.BodyHandlers.ofString());
+                        System.out.println(response.body());
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    break;
+                case 6:
+                	id = in.nextInt();in.nextLine();
+                	int msgId = in.nextInt();in.nextLine();
+                	body.addProperty("type", "recv");
+                	body.addProperty("id", id);
+                	body.addProperty("msg", msgId);
+                	req = HttpRequest.newBuilder().POST(HttpRequest.BodyPublishers.ofString(body.toString())).uri(new URI(URI + "/recv")).setHeader("Content-type", "application/json").build();
+                	try {
+                        HttpResponse response = httpClient.send(req, HttpResponse.BodyHandlers.ofString());
+                        System.out.println(response.body());
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    break;
+                case 8:
+                	id = in.nextInt();in.nextLine();
+                	int msgId = in.nextInt();in.nextLine();
+                	body.addProperty("type", "status");
+                	body.addProperty("id", id);
+                	body.addProperty("msg", msgId);
+                	req = HttpRequest.newBuilder().POST(HttpRequest.BodyPublishers.ofString(body.toString())).uri(new URI(URI + "/status")).setHeader("Content-type", "application/json").build();
+                	try {
+                        HttpResponse response = httpClient.send(req, HttpResponse.BodyHandlers.ofString());
+                        System.out.println(response.body());
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    break;
             }
         }
     }
@@ -80,6 +127,9 @@ public class Main {
         System.out.println("-1 - Leave");
         System.out.println("1 - Create Message box");
         System.out.println("2 - List users with a message box");
+        System.out.println("3 - list all new messages in a user’s message box");
         System.out.println("4 - List all messages in a userâ€™s message box");
+        System.out.println("6 - Receive a message from a user’s message box");
+        System.out.println("9 - Check the reception status of a sent message");
     }
 }
