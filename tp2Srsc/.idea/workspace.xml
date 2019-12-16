@@ -2,22 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ffd13b4b-d33e-4f28-b208-663ab8687240" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../Cliente.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Cliente/.idea/$PRODUCT_WORKSPACE_FILE$" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Cliente/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Cliente/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Cliente/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Cliente/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Cliente/Cliente.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Cliente/src/main/java/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Cliente/target/classes/Main.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mboxes/1/description" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mboxes/2/description" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mboxes/3/description" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mboxes/4/description" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Cliente/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Cliente/src/main/java/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/srsc2/tp2Srsc/Controllers/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/srsc2/tp2Srsc/Controllers/Controller.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -123,7 +109,7 @@
       <updated>1576199229072</updated>
       <workItem from="1576199230614" duration="1850000" />
       <workItem from="1576508506647" duration="5440000" />
-      <workItem from="1576516572526" duration="1687000" />
+      <workItem from="1576516572526" duration="2434000" />
     </task>
     <servers />
   </component>
@@ -145,31 +131,5 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/srsc2/tp2Srsc/Objects/ServerActions.java</url>
-          <line>77</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/srsc2/tp2Srsc/Objects/ServerActions.java</url>
-          <line>80</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/srsc2/tp2Srsc/Objects/ServerActions.java</url>
-          <line>102</line>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/srsc2/tp2Srsc/Objects/ServerActions.java</url>
-          <line>70</line>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>
