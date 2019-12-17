@@ -1,7 +1,8 @@
 package srsc2.tp2Srsc.Objects;
-import java.net.Socket;
-import java.net.ServerSocket;
+
 import java.net.InetAddress;
+import java.net.ServerSocket;
+import java.net.Socket;
 
 class Server {
 
