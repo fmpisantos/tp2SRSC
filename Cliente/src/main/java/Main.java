@@ -84,8 +84,12 @@ public class Main {
                     body.addProperty("type", "send");
                     body.addProperty("src", id);
                     body.addProperty("dst", dst);
-                    body.addProperty("msg", msg);
-                    body.addProperty("copy", copy);
+                    putEnt = r.postForEntity(URI + "/getDestInfo", new JsonObject().addProprerty("dst", dest), Object.class);
+                    Gson gson = new Gson();
+                    JsonObject response = gson.fromJson(putEnt.getBody(), JsonObject.class);
+                    Byte[] msgEncrypted = Cripto.encrypt(msg.getBytes(), response.getProperty("key") , response.getProperty("iv"));
+                    body.addProperty("msg", Base64.encodeBase64String(msgEncrypted));
+                    body.addProperty("copy", Base64.encodeBase64String(msgEncrypted));
                     putEnt = r.postForEntity(URI + "/send", body, Object.class);
                     System.err.println(putEnt.getBody().toString());
                     break;
