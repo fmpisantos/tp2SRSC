@@ -4,6 +4,7 @@
     <list default="true" id="ffd13b4b-d33e-4f28-b208-663ab8687240" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/../Cliente/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Cliente/src/main/java/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/srsc2/tp2Srsc/Controllers/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/srsc2/tp2Srsc/Controllers/Controller.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -109,7 +110,7 @@
       <updated>1576199229072</updated>
       <workItem from="1576199230614" duration="1850000" />
       <workItem from="1576508506647" duration="5440000" />
-      <workItem from="1576516572526" duration="2465000" />
+      <workItem from="1576516572526" duration="3051000" />
     </task>
     <servers />
   </component>

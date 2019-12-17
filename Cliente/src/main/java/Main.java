@@ -30,6 +30,7 @@ public class Main {
             in.nextLine();
             body = new JsonObject();
             HttpRequest req;
+            int msgID;
             int id;
             switch (command) {
                 case 1:
@@ -150,10 +151,10 @@ public class Main {
                     break;
                 case 6:
                 	id = in.nextInt();in.nextLine();
-                	int msgId = in.nextInt();in.nextLine();
+                    msgID = in.nextInt();in.nextLine();
                 	body.addProperty("type", "recv");
                 	body.addProperty("id", id);
-                	body.addProperty("msg", msgId);
+                	body.addProperty("msg", msgID);
                 	req = HttpRequest.newBuilder().POST(HttpRequest.BodyPublishers.ofString(body.toString())).uri(new URI(URI + "/recv")).setHeader("Content-type", "application/json").build();
                 	try {
                         HttpResponse response = httpClient.send(req, HttpResponse.BodyHandlers.ofString());
@@ -166,10 +167,10 @@ public class Main {
                     break;
                 case 8:
                 	id = in.nextInt();in.nextLine();
-                	int msgId = in.nextInt();in.nextLine();
+                    msgID = in.nextInt();in.nextLine();
                 	body.addProperty("type", "status");
                 	body.addProperty("id", id);
-                	body.addProperty("msg", msgId);
+                	body.addProperty("msg", msgID);
                 	req = HttpRequest.newBuilder().POST(HttpRequest.BodyPublishers.ofString(body.toString())).uri(new URI(URI + "/status")).setHeader("Content-type", "application/json").build();
                 	try {
                         HttpResponse response = httpClient.send(req, HttpResponse.BodyHandlers.ofString());
