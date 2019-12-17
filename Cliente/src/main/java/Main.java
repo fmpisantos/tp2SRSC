@@ -1,5 +1,8 @@
+import CriptoUtils.Cripto;
 import com.google.gson.Gson;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import org.apache.commons.codec.binary.Base64;
 import org.apache.http.conn.ssl.NoopHostnameVerifier;
 import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
 import org.apache.http.impl.client.CloseableHttpClient;
@@ -10,6 +13,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.http.converter.ResourceHttpMessageConverter;
 import org.springframework.http.converter.json.GsonHttpMessageConverter;
+import org.springframework.security.crypto.bcrypt.BCrypt;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.client.RestTemplate;
 
 import javax.net.ssl.SSLContext;
@@ -20,6 +25,8 @@ import java.security.KeyStore;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+
+import static CriptoUtils.Cripto.encryptThisString;
 
 public class Main {
 
@@ -49,7 +56,7 @@ public class Main {
                     System.out.println("Password:");
                     password = in.nextLine();
                     body.addProperty("uuid",uuid);
-                    body.addProperty("password",password);
+                    body.addProperty("password", encryptThisString(password));
                     putEnt = r.postForEntity(URI + "/register", body, Object.class);
                     if(putEnt.getBody()!=null)
                         System.err.println(putEnt.getBody().toString());
@@ -61,7 +68,7 @@ public class Main {
                     System.out.println("Password:");
                     password = in.nextLine();
                     body.addProperty("uuid",uuid);
-                    body.addProperty("password",password);
+                    body.addProperty("password",encryptThisString(password));
                     putEnt = r.postForEntity(URI + "/login", body, Object.class);
                     if(putEnt.getBody()!=null)
                         System.err.println(putEnt.getBody().toString());
@@ -123,12 +130,14 @@ public class Main {
                     body.addProperty("type", "send");
                     body.addProperty("src", id);
                     body.addProperty("dst", dst);
+                    /*
                     putEnt = r.postForEntity(URI + "/getDestInfo", new JsonObject().addProprerty("dst", dest), Object.class);
                     Gson gson = new Gson();
-                    JsonObject response = gson.fromJson(putEnt.getBody(), JsonObject.class);
-                    Byte[] msgEncrypted = Cripto.encrypt(msg.getBytes(), response.getProperty("key") , response.getProperty("iv"));
+                    JsonObject response = gson.fromJson((JsonElement) putEnt.getBody(), JsonObject.class);
+                    byte[] msgEncrypted = Cripto.encrypt(msg.getBytes(), response.getProperty("key") , response.getProperty("iv"));
                     body.addProperty("msg", Base64.encodeBase64String(msgEncrypted));
                     body.addProperty("copy", Base64.encodeBase64String(msgEncrypted));
+                    */
                     putEnt = r.postForEntity(URI + "/send", body, Object.class);
                     System.err.println(putEnt.getBody().toString());
                     break;
@@ -145,11 +154,13 @@ public class Main {
                     body.addProperty("receipt", receipt);
                     putEnt = r.postForEntity(URI + "/receipt", body, Object.class);
                     Gson gson = new Gson();
+                    /*
                     JsonArray response = gson.fromJson(putEnt.getBody(), JsonArray.class);
                     byte[] decodedMsg = Base64.getDecoder().decode(response.get(1));
                     byte[] msg = Cripto.decrypt(decodedMsg, privateKey, iv);
                     System.err.println("Sender: "+ response.get(0));
                     System.err.println("Msg: "+new String(msg));
+                     */
                     break;
                 case 4:
                     System.out.println("Enter user id:");

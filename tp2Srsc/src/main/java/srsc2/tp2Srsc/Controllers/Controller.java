@@ -2,12 +2,14 @@ package srsc2.tp2Srsc.Controllers;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import srsc2.tp2Srsc.Crypto.Utils;
 import srsc2.tp2Srsc.Objects.NewUser;
 import srsc2.tp2Srsc.Objects.ServerActions;
 
@@ -177,7 +179,7 @@ public class Controller {
         try {
             JsonObject j = new JsonObject();
             j.addProperty("error","User already exists");
-            return !sa.createUser(user.uuid,user.password)?ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(j.toString()):ResponseEntity.status(HttpStatus.OK).body("");
+            return !sa.createUser(user.uuid,user.password,user.iv)?ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(j.toString()):ResponseEntity.status(HttpStatus.OK).body("");
         } catch (Exception e) {
             e.printStackTrace();
             JsonObject j = new JsonObject();
@@ -201,9 +203,15 @@ public class Controller {
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public ResponseEntity<?> login(@RequestBody NewUser user){
         try {
-            JsonObject j = new JsonObject();
-            j.addProperty("error","Wrong PassWord");
-            return !sa.login(user.uuid,user.password)?ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(j.toString()):ResponseEntity.status(HttpStatus.OK).body("");
+            if(!sa.login(user.uuid,user.password)){
+                JsonObject j = new JsonObject();
+                j.addProperty("error","Wrong PassWord");
+                return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(j.toString());
+            }else{
+                HttpHeaders responseHeaders = new HttpHeaders();
+                responseHeaders.set("Authorization","Bearer "+ Utils.getNewToken(sa.getIV(user.uuid)));
+                return ResponseEntity.status(HttpStatus.OK).body("");
+            }
         } catch (Exception e) {
             e.printStackTrace();
             JsonObject j = new JsonObject();

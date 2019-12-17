@@ -1,6 +1,8 @@
 package srsc2.tp2Srsc.Objects;
 
+import com.google.gson.Gson;
 import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
 import java.io.File;
@@ -10,6 +12,7 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Base64;
 import java.util.concurrent.ConcurrentSkipListSet;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -183,13 +186,16 @@ class ServerControl {
         return user;
     }
 
-    public boolean createUser(int uuid,String password) throws Exception {
+    public boolean createUser(int uuid,String password,String iv) throws Exception {
         if(!Files.exists(Paths.get("./users"))){
             new File("./users").mkdir();
         }
         if(!Files.exists(Paths.get("./users/"+uuid))){
             new File("./users/"+uuid);
-            saveOnFile("./users/"+uuid,password);
+            JsonObject j = new JsonObject();
+            j.addProperty("password",password);
+            j.addProperty("iv",iv);
+            saveOnFile("./users/"+uuid,j.toString());
             return true;
         }else
             return false;
@@ -428,7 +434,13 @@ class ServerControl {
     }
 
     public boolean login(int uuid, String password) throws Exception {
-        return readFromFile("./users/"+uuid).equals(password);
+        JsonObject jsonObject = new JsonParser().parse(readFromFile("./users/"+uuid)).getAsJsonObject();
+        return jsonObject.get("password").equals(password);
+    }
+
+    public byte[] getIV(int uuid) throws Exception {
+        JsonObject jsonObject = new JsonParser().parse(readFromFile("./users/"+uuid)).getAsJsonObject();
+        return Base64.getDecoder().decode(String.valueOf(jsonObject.get("iv")).getBytes("UTF-8"));
     }
 }
 
