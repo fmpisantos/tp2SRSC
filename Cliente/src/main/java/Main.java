@@ -38,7 +38,7 @@ public class Main {
             in.nextLine();
             body = new JsonObject();
             HttpRequest req;
-            ResponseEntity putEnt;
+            ResponseEntity<Object> putEnt;
             int msgID;
             int id;
             switch (command) {
@@ -56,8 +56,8 @@ public class Main {
                     body.addProperty("type", "create");
                     body.addProperty("uuid", uuid);
                     body.addProperty("Attributes", new Gson().toJson(atts));
-                    putEnt = r.postForEntity(URI + "/create", body, ResponseEntity.class);
-                    System.err.println(putEnt.toString());
+                    putEnt = r.postForEntity(URI + "/create", body, Object.class);
+                    System.err.println(putEnt.getBody().toString());
                     break;
                 case 2:
                     System.out.println("Enter user id:");
@@ -65,7 +65,7 @@ public class Main {
                     in.nextLine();
                     body.addProperty("type", "list");
                     body.addProperty("id", id);
-                    putEnt = r.postForEntity(URI + "/list", body, ResponseEntity.class);
+                    putEnt = r.postForEntity(URI + "/list", body, Object.class);
                     System.err.println(putEnt.getBody().toString());
                     break;
                 case 4:
@@ -74,7 +74,7 @@ public class Main {
                     in.nextLine();
                     body.addProperty("type", "all");
                     body.addProperty("id", id);
-                    putEnt = r.postForEntity(URI + "/all", body, ResponseEntity.class);
+                    putEnt = r.postForEntity(URI + "/all", body, Object.class);
                     System.err.println(putEnt.getBody().toString());
                     break;
                 case 5:
@@ -91,7 +91,7 @@ public class Main {
                     body.addProperty("dst", dst);
                     body.addProperty("msg", msg);
                     body.addProperty("copy", copy);
-                    putEnt = r.postForEntity(URI + "/send", body, ResponseEntity.class);
+                    putEnt = r.postForEntity(URI + "/send", body, Object.class);
                     System.err.println(putEnt.getBody().toString());
                     break;
                 case 7:
@@ -105,7 +105,7 @@ public class Main {
                     body.addProperty("id", id);
                     body.addProperty("msg", msgID);
                     body.addProperty("receipt", receipt);
-                    putEnt = r.postForEntity(URI + "/receipt", body, ResponseEntity.class);
+                    putEnt = r.postForEntity(URI + "/receipt", body, Object.class);
                     System.err.println(putEnt.getBody());
                     break;
                 case 3:
@@ -114,7 +114,7 @@ public class Main {
                     in.nextLine();
                     body.addProperty("type", "new");
                     body.addProperty("id", id);
-                    putEnt = r.postForEntity(URI + "/new", body, ResponseEntity.class);
+                    putEnt = r.postForEntity(URI + "/new", body, Object.class);
                     System.err.println(putEnt.getBody().toString());
                     break;
                 case 6:
@@ -125,7 +125,7 @@ public class Main {
                     body.addProperty("type", "recv");
                     body.addProperty("id", id);
                     body.addProperty("msg", msgID);
-                    putEnt = r.postForEntity(URI + "/recv", body, ResponseEntity.class);
+                    putEnt = r.postForEntity(URI + "/recv", body, Object.class);
                     System.err.println(putEnt.getBody().toString());
                     break;
                 case 8:
@@ -136,7 +136,7 @@ public class Main {
                     body.addProperty("type", "status");
                     body.addProperty("id", id);
                     body.addProperty("msg", msgID);
-                    putEnt = r.postForEntity(URI + "/status", body, ResponseEntity.class);
+                    putEnt = r.postForEntity(URI + "/status", body, Object.class);
                     System.err.println(putEnt.getBody().toString());
                     break;
             }
