@@ -2,22 +2,39 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ffd13b4b-d33e-4f28-b208-663ab8687240" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/mboxes/1/description" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/store/server.cer" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/store/server.jks" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/store/server.jks.old" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/store/server.pfx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/store/serverbase64.cer" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/store/serverselfcertificate.jks" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/store/serverselfcertificate.jks.old" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/store/trustedstore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tls.conf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Cliente/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Cliente/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Cliente/store/client.cer" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Cliente/store/client.jks" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Cliente/store/client.jks.old" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Cliente/store/clientPk.pfx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Cliente/store/clientbase64.cer" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Cliente/store/clientselfcertificate.jks" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Cliente/store/clientselfcertificate.jks.old" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Cliente/store/trustedstore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mboxes/2/description" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mboxes/3/description" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/store/serverPk.pfx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Cliente/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Cliente/src/main/java/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Cliente/store/cert/trustedstore" beforeDir="false" afterPath="$PROJECT_DIR$/../Cliente/store/cert/trustedstore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Cliente/store/cert/Cliente.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Cliente/store/cert/client.cer" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Cliente/store/cert/client.pfx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Cliente/store/cert/clienteKeyStore.jks" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Cliente/store/cert/clientebase64.cer" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Cliente/store/cert/clientselfcertificate.jks" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Cliente/store/cert/hj.jks" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Cliente/store/cert/trustedstore" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../Cliente/target/classes/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Cliente/target/classes/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mboxes/1/description" beforeDir="false" afterPath="$PROJECT_DIR$/mboxes/1/description" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/srsc2/tp2Srsc/Controllers/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/srsc2/tp2Srsc/Controllers/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/server.cer" beforeDir="false" afterPath="$PROJECT_DIR$/store/server.cer" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/server.jks" beforeDir="false" afterPath="$PROJECT_DIR$/store/server.jks" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/server.jks.old" beforeDir="false" afterPath="$PROJECT_DIR$/store/server.jks.old" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/server.pfx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/serverbase64.cer" beforeDir="false" afterPath="$PROJECT_DIR$/store/serverbase64.cer" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/serverselfcertificate.jks" beforeDir="false" afterPath="$PROJECT_DIR$/store/serverselfcertificate.jks" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/serverselfcertificate.jks.old" beforeDir="false" afterPath="$PROJECT_DIR$/store/serverselfcertificate.jks.old" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/trustedstore" beforeDir="false" afterPath="$PROJECT_DIR$/store/trustedstore" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -132,6 +149,7 @@
       <workItem from="1576535276303" duration="7000" />
       <workItem from="1576536872073" duration="2200000" />
       <workItem from="1576544141913" duration="5187000" />
+      <workItem from="1576595246299" duration="4444000" />
     </task>
     <servers />
   </component>

@@ -33,6 +33,7 @@ public class Controller {
     */
 
     public ResponseEntity response(String body){
+        System.out.println(body);
         Gson gson = new Gson();
         JsonObject jsonObject = gson.fromJson(body, JsonObject.class);
         System.out.println(jsonObject.toString());
