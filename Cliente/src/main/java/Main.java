@@ -1,5 +1,6 @@
 import CriptoUtils.Cripto;
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import org.apache.commons.codec.binary.Base64;
@@ -8,6 +9,7 @@ import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.ssl.SSLContextBuilder;
+import org.apache.tomcat.util.codec.binary.Base64;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
@@ -17,11 +19,15 @@ import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.client.RestTemplate;
 
+import javax.crypto.spec.IvParameterSpec;
+import javax.crypto.spec.SecretKeySpec;
 import javax.net.ssl.SSLContext;
 import java.io.File;
 import java.io.FileInputStream;
 import java.net.http.HttpRequest;
+import java.security.Key;
 import java.security.KeyStore;
+import java.security.PrivateKey;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -48,6 +54,15 @@ public class Main {
             int id;
             int uuid;
             String password;
+            String privateKey;
+            KeyStore ks;
+            char[] passphrase = "client".toCharArray();
+            ks = KeyStore.getInstance("JKS");
+            ks.load(new FileInputStream("../../../store/client"), passphrase);
+            PrivateKey p = (PrivateKey) ks.getKey("client", "queremosovinte".toCharArray());
+            privateKey = new String(p.getEncoded());
+            IvParameterSpec iv =  Cripto.genIVforAES();
+
             switch (command) {
                 case 0:
                     System.out.println("Enter uuid:");
@@ -56,7 +71,9 @@ public class Main {
                     System.out.println("Password:");
                     password = in.nextLine();
                     body.addProperty("uuid",uuid);
-                    body.addProperty("password", encryptThisString(password));
+                    body.addProperty("password",password);
+                    byte[] ivSend = Cripto.genIVforAES().getIV();
+                    body.addProperty("iv", Base64.encodeBase64String(ivSend));
                     putEnt = r.postForEntity(URI + "/register", body, Object.class);
                     if(putEnt.getBody()!=null)
                         System.err.println(putEnt.getBody().toString());
@@ -73,13 +90,8 @@ public class Main {
                     if(putEnt.getBody()!=null)
                         System.err.println(putEnt.getBody().toString());
                     else{
-                        /*
-                        KeyStore ks;
-                        char[] passphrase = "cliente".toCharArray();
-                        ks = KeyStore.getInstance("JKS");
-                        ks.load(new FileInputStream("../../../store/client"), passphrase);
-                        ks.KeyStore.PrivateKeyEntry.toString();
-                         */
+                    //inicializar o iv
+
                     }
                     break;
                 case 2:
@@ -130,11 +142,13 @@ public class Main {
                     body.addProperty("type", "send");
                     body.addProperty("src", id);
                     body.addProperty("dst", dst);
-                    /*
-                    putEnt = r.postForEntity(URI + "/getDestInfo", new JsonObject().addProprerty("dst", dest), Object.class);
+                    JsonObject bla = new JsonObject();
+                    bla.addProperty("dst", dst);
+                    putEnt = r.postForEntity(URI + "/getDestInfo", bla, Object.class);
                     Gson gson = new Gson();
                     JsonObject response = gson.fromJson((JsonElement) putEnt.getBody(), JsonObject.class);
-                    byte[] msgEncrypted = Cripto.encrypt(msg.getBytes(), response.getProperty("key") , response.getProperty("iv"));
+                    Base64.
+                    byte[] msgEncrypted = Cripto.encrypt(msg.getBytes(), (SecretKeySpec) new SecretKeySpec(Base64.decodeBase64((String) response.get("privateKey").getAsString()), "DES") , new IvParameterSpec(Base64.decodeBase64((String) response.get("iv").getAsString())));
                     body.addProperty("msg", Base64.encodeBase64String(msgEncrypted));
                     body.addProperty("copy", Base64.encodeBase64String(msgEncrypted));
                     */
@@ -153,14 +167,12 @@ public class Main {
                     body.addProperty("msg", msgID);
                     body.addProperty("receipt", receipt);
                     putEnt = r.postForEntity(URI + "/receipt", body, Object.class);
-                    Gson gson = new Gson();
-                    /*
-                    JsonArray response = gson.fromJson(putEnt.getBody(), JsonArray.class);
-                    byte[] decodedMsg = Base64.getDecoder().decode(response.get(1));
-                    byte[] msg = Cripto.decrypt(decodedMsg, privateKey, iv);
-                    System.err.println("Sender: "+ response.get(0));
-                    System.err.println("Msg: "+new String(msg));
-                     */
+                    gson = new Gson();
+                    JsonArray msg64 = gson.fromJson((JsonElement) putEnt.getBody(), JsonArray.class);
+                    byte[] decodedMsg = Base64.decodeBase64(String.valueOf(msg64.get(1)));
+                    byte[] decryptedMsg = Cripto.decrypt(decodedMsg, (SecretKeySpec) p, iv);
+                    System.err.println("Sender: "+ msg64.get(0));
+                    System.err.println("Msg: "+new String(decryptedMsg));
                     break;
                 case 4:
                     System.out.println("Enter user id:");
