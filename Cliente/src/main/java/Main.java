@@ -26,10 +26,10 @@ public class Main {
     public static void main(String[] args) throws Exception {
         RestTemplate r = restTemplateBuilder().build();
         Scanner in = new Scanner(System.in);
-        Menu();
         int command = 0;
         JsonObject body;
         while (command != -1) {
+            Menu();
             command = in.nextInt();
             in.nextLine();
             body = new JsonObject();
@@ -40,8 +40,7 @@ public class Main {
             switch (command) {
                 case 1:
                     System.out.println("Enter uuid:");
-                    int uuid = in.nextInt();
-                    in.nextLine();
+                    int uuid = Integer.parseInt(in.nextLine());
                     System.out.println("Other atributes (Enter \"-0\" to stop)");
                     List atts = new ArrayList<String>();
                     String att = in.nextLine();
@@ -135,6 +134,9 @@ public class Main {
                     putEnt = r.postForEntity(URI + "/status", body, Object.class);
                     System.err.println(putEnt.getBody().toString());
                     break;
+                default:
+                    System.err.println("Wrong Command try again!");
+                    break;
             }
         }
     }
@@ -163,7 +165,7 @@ public class Main {
         System.out.println("-1 - Leave");
         System.out.println("1 - Create Message box");
         System.out.println("2 - List users with a message box");
-        System.out.println("3 - list all new messages in a user's message box");
+        System.out.println("3 - List all new messages in a user's message box");
         System.out.println("4 - List all messages in a user’s message box");
         System.out.println("5 - Send a message to a user’s message box");
         System.out.println("7 - Receipt message sent by a client after receiving and validating a message from a message box");
