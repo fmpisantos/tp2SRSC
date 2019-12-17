@@ -108,6 +108,7 @@ public class Main {
                     body.addProperty("type", "all");
                     body.addProperty("id", id);
                     putEnt = r.postForEntity(URI + "/all", body, Object.class);
+
                     System.err.println(putEnt.getBody().toString());
                     break;
                 case 6:
@@ -143,7 +144,12 @@ public class Main {
                     body.addProperty("msg", msgID);
                     body.addProperty("receipt", receipt);
                     putEnt = r.postForEntity(URI + "/receipt", body, Object.class);
-                    System.err.println(putEnt.getBody());
+                    Gson gson = new Gson();
+                    JsonArray response = gson.fromJson(putEnt.getBody(), JsonArray.class);
+                    byte[] decodedMsg = Base64.getDecoder().decode(response.get(1));
+                    byte[] msg = Cripto.decrypt(decodedMsg, privateKey, iv);
+                    System.err.println("Sender: "+ response.get(0));
+                    System.err.println("Msg: "+new String(msg));
                     break;
                 case 4:
                     System.out.println("Enter user id:");
