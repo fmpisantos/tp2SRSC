@@ -2,9 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ffd13b4b-d33e-4f28-b208-663ab8687240" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/mboxes/1/description" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/store/server.cer" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/store/server.jks" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/store/server.jks.old" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/store/server.pfx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/store/serverbase64.cer" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/store/serverselfcertificate.jks" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/store/serverselfcertificate.jks.old" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/store/trustedstore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tls.conf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Cliente/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Cliente/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Cliente/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Cliente/src/main/java/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Cliente/store/cert/trustedstore" beforeDir="false" afterPath="$PROJECT_DIR$/../Cliente/store/cert/trustedstore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Cliente/target/classes/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Cliente/target/classes/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/srsc2/tp2Srsc/Controllers/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/srsc2/tp2Srsc/Controllers/Controller.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -53,17 +66,22 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
+    <property name="settings.editor.selected.configurable" value="terminal" />
   </component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="srsc2.tp2Srsc" />
     </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\pipas\Desktop\Faculdade\4ºANO\SRSC\Projecto 2\tp2Srsc\src\main" />
+      <recent name="C:\Users\pipas\Desktop\Faculdade\4ºANO\SRSC\Projecto 2\tp2Srsc\src\main\java\srsc2\tp2Srsc\Controllers" />
+    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="srsc2.tp2Srsc.Controllers" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\pipas\Desktop\Faculdade\4ºANO\SRSC\Projecto 2\tp2Srsc\src\main\java\srsc2\tp2Srsc\Controllers" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\pipas\Desktop\Faculdade\4ºANO\SRSC\Projecto 2\tp2Srsc" />
+      <recent name="C:\Users\pipas\Desktop\Faculdade\4ºANO\SRSC\Projecto 2\tp2Srsc\src\main\resources" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -111,6 +129,9 @@
       <workItem from="1576199230614" duration="1850000" />
       <workItem from="1576508506647" duration="5440000" />
       <workItem from="1576516572526" duration="3051000" />
+      <workItem from="1576535276303" duration="7000" />
+      <workItem from="1576536872073" duration="2200000" />
+      <workItem from="1576544141913" duration="5187000" />
     </task>
     <servers />
   </component>
