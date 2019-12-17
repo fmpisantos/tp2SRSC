@@ -7,6 +7,9 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.concurrent.ConcurrentSkipListSet;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -178,6 +181,18 @@ class ServerControl {
         }
 
         return user;
+    }
+
+    public boolean createUser(int uuid,String password) throws Exception {
+        if(!Files.exists(Paths.get("./users"))){
+            new File("./users").mkdir();
+        }
+        if(!Files.exists(Paths.get("./users/"+uuid))){
+            new File("./users/"+uuid);
+            saveOnFile("./users/"+uuid,password);
+            return true;
+        }else
+            return false;
     }
 
     synchronized String
@@ -412,6 +427,9 @@ class ServerControl {
         return result + "]}";
     }
 
+    public boolean login(int uuid, String password) throws Exception {
+        return readFromFile("./users/"+uuid).equals(password);
+    }
 }
 
 

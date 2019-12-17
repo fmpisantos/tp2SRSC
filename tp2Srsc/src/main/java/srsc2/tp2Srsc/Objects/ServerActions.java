@@ -74,6 +74,10 @@ public class ServerActions implements Runnable {
         return msg;
     }
 
+    public boolean createUser(int uuid, String password) throws Exception {
+        return registry.createUser(uuid,password);
+    }
+
     public String
     executeCommand(JsonObject data) {
         JsonElement cmd = data.get( "type" );
@@ -286,5 +290,8 @@ public class ServerActions implements Runnable {
 
     }
 
+    public boolean login(int uuid, String password) throws Exception {
+        return registry.login(uuid,password);
+    }
 }
 

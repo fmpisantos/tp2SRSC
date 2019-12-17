@@ -3,14 +3,16 @@
   <component name="ChangeListManager">
     <list default="true" id="ffd13b4b-d33e-4f28-b208-663ab8687240" name="Default Changelist" comment="">
       <change afterPath="$PROJECT_DIR$/../Cliente/target/classes/META-INF/Cliente.kotlin_module" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mboxes/1/2_1" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mboxes/1/description" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mboxes/2/description" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/receipts/2/1_1" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/srsc2/tp2Srsc/Objects/NewUser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/users/1" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Cliente/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Cliente/src/main/java/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Cliente/target/classes/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Cliente/target/classes/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Cliente/target/classes/Objects/CreateResponse.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/srsc2/tp2Srsc/Controllers/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/srsc2/tp2Srsc/Controllers/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/srsc2/tp2Srsc/Objects/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/srsc2/tp2Srsc/Objects/Server.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/srsc2/tp2Srsc/Objects/ServerActions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/srsc2/tp2Srsc/Objects/ServerActions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/srsc2/tp2Srsc/Objects/ServerControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/srsc2/tp2Srsc/Objects/ServerControl.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

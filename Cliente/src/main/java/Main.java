@@ -14,7 +14,9 @@ import org.springframework.web.client.RestTemplate;
 
 import javax.net.ssl.SSLContext;
 import java.io.File;
+import java.io.FileInputStream;
 import java.net.http.HttpRequest;
+import java.security.KeyStore;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -37,10 +39,46 @@ public class Main {
             ResponseEntity<Object> putEnt;
             int msgID;
             int id;
+            int uuid;
+            String password;
             switch (command) {
+                case 0:
+                    System.out.println("Enter uuid:");
+                    uuid = in.nextInt();
+                    in.nextLine();
+                    System.out.println("Password:");
+                    password = in.nextLine();
+                    body.addProperty("uuid",uuid);
+                    body.addProperty("password",password);
+                    putEnt = r.postForEntity(URI + "/register", body, Object.class);
+                    if(putEnt.getBody()!=null)
+                        System.err.println(putEnt.getBody().toString());
+                    break;
                 case 1:
                     System.out.println("Enter uuid:");
-                    int uuid = Integer.parseInt(in.nextLine());
+                    uuid = in.nextInt();
+                    in.nextLine();
+                    System.out.println("Password:");
+                    password = in.nextLine();
+                    body.addProperty("uuid",uuid);
+                    body.addProperty("password",password);
+                    putEnt = r.postForEntity(URI + "/login", body, Object.class);
+                    if(putEnt.getBody()!=null)
+                        System.err.println(putEnt.getBody().toString());
+                    else{
+                        /*
+                        KeyStore ks;
+                        char[] passphrase = "cliente".toCharArray();
+                        ks = KeyStore.getInstance("JKS");
+                        ks.load(new FileInputStream("../../../store/client"), passphrase);
+                        ks.KeyStore.PrivateKeyEntry.toString();
+                         */
+                    }
+                    break;
+                case 2:
+                    System.out.println("Enter uuid:");
+                    uuid = in.nextInt();
+                    in.nextLine();
                     System.out.println("Other atributes (Enter \"-0\" to stop)");
                     List atts = new ArrayList<String>();
                     String att = in.nextLine();
@@ -54,7 +92,7 @@ public class Main {
                     putEnt = r.postForEntity(URI + "/create", body, Object.class);
                     System.err.println(putEnt.getBody().toString());
                     break;
-                case 2:
+                case 3:
                     System.out.println("Enter user id:");
                     id = in.nextInt();
                     in.nextLine();
@@ -63,7 +101,7 @@ public class Main {
                     putEnt = r.postForEntity(URI + "/list", body, Object.class);
                     System.err.println(putEnt.getBody().toString());
                     break;
-                case 4:
+                case 5:
                     System.out.println("Enter user id:");
                     id = in.nextInt();
                     in.nextLine();
@@ -72,7 +110,7 @@ public class Main {
                     putEnt = r.postForEntity(URI + "/all", body, Object.class);
                     System.err.println(putEnt.getBody().toString());
                     break;
-                case 5:
+                case 6:
                     System.out.println("Enter your user id:");
                     id = in.nextInt();
                     in.nextLine();
@@ -93,7 +131,7 @@ public class Main {
                     putEnt = r.postForEntity(URI + "/send", body, Object.class);
                     System.err.println(putEnt.getBody().toString());
                     break;
-                case 7:
+                case 8:
                     System.out.println("Enter your user id:");
                     id = in.nextInt();
                     in.nextLine();
@@ -107,7 +145,7 @@ public class Main {
                     putEnt = r.postForEntity(URI + "/receipt", body, Object.class);
                     System.err.println(putEnt.getBody());
                     break;
-                case 3:
+                case 4:
                     System.out.println("Enter user id:");
                     id = in.nextInt();
                     in.nextLine();
@@ -116,7 +154,7 @@ public class Main {
                     putEnt = r.postForEntity(URI + "/new", body, Object.class);
                     System.err.println(putEnt.getBody().toString());
                     break;
-                case 6:
+                case 7:
                     id = in.nextInt();
                     in.nextLine();
                     msgID = in.nextInt();
@@ -127,7 +165,7 @@ public class Main {
                     putEnt = r.postForEntity(URI + "/recv", body, Object.class);
                     System.err.println(putEnt.getBody().toString());
                     break;
-                case 8:
+                case 9:
                     id = in.nextInt();
                     in.nextLine();
                     msgID = in.nextInt();
@@ -167,13 +205,15 @@ public class Main {
     public static void Menu(){
         System.out.println("Menu:");
         System.out.println("-1 - Leave");
-        System.out.println("1 - Create Message box");
-        System.out.println("2 - List users with a message box");
-        System.out.println("3 - List all new messages in a user's message box");
-        System.out.println("4 - List all messages in a user’s message box");
-        System.out.println("5 - Send a message to a user’s message box");
+        System.out.println("0 - Register");
+        System.out.println("1 - Login");
+        System.out.println("2 - Create Message box");
+        System.out.println("3 - List users with a message box");
+        System.out.println("4 - list all new messages in a user's message box");
+        System.out.println("5 - List all messages in a user’s message box");
+        System.out.println("6 - Send a message to a user’s message box");
         System.out.println("7 - Receipt message sent by a client after receiving and validating a message from a message box");
-        System.out.println("6 - Receive a message from a user's message box");
+        System.out.println("8 - Receive a message from a user's message box");
         System.out.println("9 - Check the reception status of a sent message");
     }
 }

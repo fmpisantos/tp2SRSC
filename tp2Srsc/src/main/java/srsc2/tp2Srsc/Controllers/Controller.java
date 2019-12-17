@@ -8,7 +8,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import srsc2.tp2Srsc.Objects.NewUser;
 import srsc2.tp2Srsc.Objects.ServerActions;
+
+import javax.websocket.server.PathParam;
 
 @RestController
 public class Controller {
@@ -33,10 +36,8 @@ public class Controller {
     */
 
     public ResponseEntity response(String body){
-        System.out.println(body);
         Gson gson = new Gson();
         JsonObject jsonObject = gson.fromJson(body, JsonObject.class);
-        System.out.println(jsonObject.toString());
         String resp = sa.executeCommand(jsonObject);
         boolean error = resp.contains("\"error\":");
         return ResponseEntity.status(!error?HttpStatus.OK:HttpStatus.EXPECTATION_FAILED).body(resp);
@@ -156,5 +157,58 @@ public class Controller {
     @RequestMapping(value = "/status", method = RequestMethod.POST, produces = "application/json")
     public ResponseEntity<?> status(@RequestBody String body) {
         return response(body);
+    }
+
+
+    /*
+        Request:
+        {
+         "uuid": <uuid>,
+         "password": <encripted password>
+        }
+        Response:
+            200 OK or:
+            {
+                "error": <Error>
+            }
+    */
+    @RequestMapping(value = "/register", method = RequestMethod.POST, produces = "application/json")
+    public ResponseEntity<?> register(@RequestBody NewUser user){
+        try {
+            JsonObject j = new JsonObject();
+            j.addProperty("error","User already exists");
+            return !sa.createUser(user.uuid,user.password)?ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(j.toString()):ResponseEntity.status(HttpStatus.OK).body("");
+        } catch (Exception e) {
+            e.printStackTrace();
+            JsonObject j = new JsonObject();
+            j.addProperty("error",e.getMessage());
+            return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(j.toString());
+        }
+    }
+
+    /*
+        Request:
+        {
+         "uuid": <uuid>,
+         "password": <encripted password>
+        }
+        Response:
+            200 OK + jwt in Authorization Header  or:
+            {
+                "error": <Error>
+            }
+    */
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    public ResponseEntity<?> login(@RequestBody NewUser user){
+        try {
+            JsonObject j = new JsonObject();
+            j.addProperty("error","Wrong PassWord");
+            return !sa.login(user.uuid,user.password)?ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(j.toString()):ResponseEntity.status(HttpStatus.OK).body("");
+        } catch (Exception e) {
+            e.printStackTrace();
+            JsonObject j = new JsonObject();
+            j.addProperty("error",e.getMessage());
+            return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(j.toString());
+        }
     }
 }
