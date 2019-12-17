@@ -1,11 +1,13 @@
 package srsc2.tp2Srsc.Objects;
-import java.lang.Thread;
-import java.net.Socket;
-import java.io.OutputStream;
+
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.google.gson.stream.JsonReader;
+
 import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
-import com.google.gson.*;
-import com.google.gson.stream.*;
+import java.io.OutputStream;
+import java.net.Socket;
 
 public class ServerActions implements Runnable {
 

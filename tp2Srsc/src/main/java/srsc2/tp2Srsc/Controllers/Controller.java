@@ -2,13 +2,13 @@ package srsc2.tp2Srsc.Controllers;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
-import org.springframework.web.bind.annotation.RequestBody;
-import srsc2.tp2Srsc.Objects.ServerActions;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import srsc2.tp2Srsc.Objects.ServerActions;
 
 @RestController
 public class Controller {

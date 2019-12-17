@@ -1,5 +1,6 @@
 package srsc2.tp2Srsc.Objects;
-import com.google.gson.*;
+
+import com.google.gson.JsonElement;
 
 class UserDescription implements Comparable {
 

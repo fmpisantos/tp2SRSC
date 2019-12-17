@@ -1,6 +1,8 @@
 package srsc2.tp2Srsc.Objects;
+
+import com.google.gson.JsonElement;
+
 import java.io.OutputStream;
-import com.google.gson.*;
 
 class ClientDescription implements Comparable {
 

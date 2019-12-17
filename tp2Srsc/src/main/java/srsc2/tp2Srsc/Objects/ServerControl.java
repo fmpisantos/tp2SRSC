@@ -1,4 +1,8 @@
 package srsc2.tp2Srsc.Objects;
+
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileWriter;
@@ -6,8 +10,6 @@ import java.nio.charset.StandardCharsets;
 import java.util.concurrent.ConcurrentSkipListSet;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-import com.google.gson.*;
 
 class ServerControl {
     ConcurrentSkipListSet<UserDescription> users = null;
