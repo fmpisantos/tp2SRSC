@@ -10,6 +10,8 @@
       <change afterPath="$PROJECT_DIR$/../Cliente/store/clientselfcertificate.jks" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../Cliente/store/clientselfcertificate.jks.old" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../Cliente/store/trustedstore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mboxes/2/description" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mboxes/3/description" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/store/serverPk.pfx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Cliente/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Cliente/src/main/java/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Cliente/store/cert/Cliente.iml" beforeDir="false" />
@@ -147,7 +149,7 @@
       <workItem from="1576535276303" duration="7000" />
       <workItem from="1576536872073" duration="2200000" />
       <workItem from="1576544141913" duration="5187000" />
-      <workItem from="1576595246299" duration="4877000" />
+      <workItem from="1576595246299" duration="4444000" />
     </task>
     <servers />
   </component>
