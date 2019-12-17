@@ -6,9 +6,7 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.ssl.SSLContextBuilder;
 import org.springframework.boot.web.client.RestTemplateBuilder;
-import org.springframework.http.HttpEntity;
 import org.springframework.http.ResponseEntity;
-import org.springframework.http.client.ClientHttpRequestFactory;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.http.converter.ResourceHttpMessageConverter;
 import org.springframework.http.converter.json.GsonHttpMessageConverter;
@@ -27,10 +25,6 @@ import java.util.function.Supplier;
 
 public class Main {
 
-    private final static HttpClient httpClient = HttpClient.newBuilder()
-            .version(HttpClient.Version.HTTP_2)
-            .build();
-
     private static final String URI = "https://localhost:8080";
 
     public static void main(String[] args) throws Exception {
@@ -44,6 +38,7 @@ public class Main {
             in.nextLine();
             body = new JsonObject();
             HttpRequest req;
+            ResponseEntity putEnt;
             int msgID;
             int id;
             switch (command) {
@@ -61,16 +56,8 @@ public class Main {
                     body.addProperty("type", "create");
                     body.addProperty("uuid", uuid);
                     body.addProperty("Attributes", new Gson().toJson(atts));
-                    req = HttpRequest.newBuilder().POST(HttpRequest.BodyPublishers.ofString(body.toString())).uri(new URI(URI + "/create")).setHeader("Content-type", "application/json").build();
-//                    try {
-                        ResponseEntity putEnt = r.postForEntity(URI + "/create", body.toString(), ResponseEntity.class);
-//                        HttpResponse response = httpClient.send(req, HttpResponse.BodyHandlers.ofString());
-//                        System.out.println(response.body());
-                    /*} catch (IOException e) {
-                        e.printStackTrace();
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }*/
+                    putEnt = r.postForEntity(URI + "/create", body, ResponseEntity.class);
+                    System.err.println(putEnt.toString());
                     break;
                 case 2:
                     System.out.println("Enter user id:");
@@ -78,15 +65,8 @@ public class Main {
                     in.nextLine();
                     body.addProperty("type", "list");
                     body.addProperty("id", id);
-                    req = HttpRequest.newBuilder().POST(HttpRequest.BodyPublishers.ofString(body.toString())).uri(new URI(URI + "/list")).setHeader("Content-type", "application/json").build();
-                    try {
-                        HttpResponse response = httpClient.send(req, HttpResponse.BodyHandlers.ofString());
-                        System.out.println(response.body());
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
+                    putEnt = r.postForEntity(URI + "/list", body, ResponseEntity.class);
+                    System.err.println(putEnt.getBody().toString());
                     break;
                 case 4:
                     System.out.println("Enter user id:");
@@ -94,15 +74,8 @@ public class Main {
                     in.nextLine();
                     body.addProperty("type", "all");
                     body.addProperty("id", id);
-                    req = HttpRequest.newBuilder().POST(HttpRequest.BodyPublishers.ofString(body.toString())).uri(new URI(URI + "/all")).setHeader("Content-type", "application/json").build();
-                    try {
-                        HttpResponse response = httpClient.send(req, HttpResponse.BodyHandlers.ofString());
-                        System.out.println(response.body());
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
+                    putEnt = r.postForEntity(URI + "/all", body, ResponseEntity.class);
+                    System.err.println(putEnt.getBody().toString());
                     break;
                 case 5:
                     System.out.println("Enter your user id:");
@@ -118,15 +91,8 @@ public class Main {
                     body.addProperty("dst", dst);
                     body.addProperty("msg", msg);
                     body.addProperty("copy", copy);
-                    req = HttpRequest.newBuilder().POST(HttpRequest.BodyPublishers.ofString(body.toString())).uri(new URI(URI + "/send")).setHeader("Content-type", "application/json").build();
-                    try {
-                        HttpResponse response = httpClient.send(req, HttpResponse.BodyHandlers.ofString());
-                        System.out.println(response.body());
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
+                    putEnt = r.postForEntity(URI + "/send", body, ResponseEntity.class);
+                    System.err.println(putEnt.getBody().toString());
                     break;
                 case 7:
                     System.out.println("Enter your user id:");
@@ -139,15 +105,8 @@ public class Main {
                     body.addProperty("id", id);
                     body.addProperty("msg", msgID);
                     body.addProperty("receipt", receipt);
-                    req = HttpRequest.newBuilder().POST(HttpRequest.BodyPublishers.ofString(body.toString())).uri(new URI(URI + "/receipt")).setHeader("Content-type", "application/json").build();
-                    try {
-                        HttpResponse response = httpClient.send(req, HttpResponse.BodyHandlers.ofString());
-                        System.out.println(response.body());
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
+                    putEnt = r.postForEntity(URI + "/receipt", body, ResponseEntity.class);
+                    System.err.println(putEnt.getBody());
                     break;
                 case 3:
                     System.out.println("Enter user id:");
@@ -155,15 +114,8 @@ public class Main {
                     in.nextLine();
                     body.addProperty("type", "new");
                     body.addProperty("id", id);
-                    req = HttpRequest.newBuilder().POST(HttpRequest.BodyPublishers.ofString(body.toString())).uri(new URI(URI + "/new")).setHeader("Content-type", "application/json").build();
-                    try {
-                        HttpResponse response = httpClient.send(req, HttpResponse.BodyHandlers.ofString());
-                        System.out.println(response.body());
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
+                    putEnt = r.postForEntity(URI + "/new", body, ResponseEntity.class);
+                    System.err.println(putEnt.getBody().toString());
                     break;
                 case 6:
                     id = in.nextInt();
@@ -173,15 +125,8 @@ public class Main {
                     body.addProperty("type", "recv");
                     body.addProperty("id", id);
                     body.addProperty("msg", msgID);
-                    req = HttpRequest.newBuilder().POST(HttpRequest.BodyPublishers.ofString(body.toString())).uri(new URI(URI + "/recv")).setHeader("Content-type", "application/json").build();
-                    try {
-                        HttpResponse response = httpClient.send(req, HttpResponse.BodyHandlers.ofString());
-                        System.out.println(response.body());
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
+                    putEnt = r.postForEntity(URI + "/recv", body, ResponseEntity.class);
+                    System.err.println(putEnt.getBody().toString());
                     break;
                 case 8:
                     id = in.nextInt();
@@ -191,15 +136,8 @@ public class Main {
                     body.addProperty("type", "status");
                     body.addProperty("id", id);
                     body.addProperty("msg", msgID);
-                    req = HttpRequest.newBuilder().POST(HttpRequest.BodyPublishers.ofString(body.toString())).uri(new URI(URI + "/status")).setHeader("Content-type", "application/json").build();
-                    try {
-                        HttpResponse response = httpClient.send(req, HttpResponse.BodyHandlers.ofString());
-                        System.out.println(response.body());
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
+                    putEnt = r.postForEntity(URI + "/status", body, ResponseEntity.class);
+                    System.err.println(putEnt.getBody().toString());
                     break;
             }
         }
@@ -207,8 +145,8 @@ public class Main {
 
     private static RestTemplateBuilder restTemplateBuilder () throws Exception {
         SSLContext sslContext = SSLContextBuilder.create()
-                .loadKeyMaterial( new File("./store/cert/client.pfx"), "queremosovinte".toCharArray(), "queremosovinte".toCharArray() )
-                .loadTrustMaterial( new File( "./store/cert/trustedstore" ), "queremosovinte".toCharArray() ).build();
+                .loadKeyMaterial( new File("./store/client.jks"), "queremosovinte".toCharArray(), "queremosovinte".toCharArray() )
+                .loadTrustMaterial( new File( "./store/trustedstore"), "queremosovinte".toCharArray() ).build();
         CloseableHttpClient client = HttpClients.custom()
                 .setSSLSocketFactory(new SSLConnectionSocketFactory(
                         sslContext,
