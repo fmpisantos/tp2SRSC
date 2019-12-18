@@ -17,6 +17,21 @@ import static javax.crypto.Cipher.getInstance;
 public class Cripto {
     private static final String ENC_ALG = "RSA";
 
+    public static byte[] sign( PrivateKey privateKey, byte[] data ) throws SignatureException, InvalidKeyException, NoSuchAlgorithmException {
+        Signature signature = Signature.getInstance("SHA256withRSA");
+        signature.initSign( privateKey );
+        signature.update( data );
+
+        return signature.sign();
+    }
+
+    public static boolean verifySignature( PublicKey publicKey, byte[] signedData, byte[] originalData ) throws InvalidKeyException, SignatureException, NoSuchAlgorithmException {
+        Signature signature = Signature.getInstance("SHA256withRSA");
+        signature.initVerify( publicKey );
+        signature.update( originalData );
+        return signature.verify( signedData );
+    }
+
     public static byte[] decrypt(byte[] data, PrivateKey key) throws NoSuchPaddingException, NoSuchAlgorithmException, InvalidAlgorithmParameterException, InvalidKeyException, BadPaddingException, IllegalBlockSizeException {
         Cipher c = getInstance(ENC_ALG);
         c.init(DECRYPT_MODE, key);

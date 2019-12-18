@@ -139,20 +139,6 @@ public class Main {
                             System.err.println(putEnt.getBody().toString());
                     }
                     break;
-                case 8:
-                    System.out.println("Enter your user id:");
-                    id = in.nextInt();
-                    in.nextLine();
-                    System.out.println("Enter message id:");
-                    msgID = in.nextLine();
-                    //TODO: Client generates receit
-                    String receipt = in.nextLine();
-                    body.addProperty("type", "receipt");
-                    body.addProperty("id", id);
-                    body.addProperty("msg", msgID);
-                    body.addProperty("receipt", receipt);
-                    post(r, URI + "/receipt", body,auth);
-                    break;
                 case 4:
                     System.out.println("Enter user id:");
                     id = in.nextInt();
@@ -173,16 +159,26 @@ public class Main {
                     body.addProperty("id", id);
                     body.addProperty("msg", msgID);
                     putEnt = post(r, URI + "/recv", body,auth);
+
+                    String clearTextMessage = "";
                     gson = new Gson();
                     if(putEnt!=null) {
                         JsonObject msg64 = gson.toJsonTree(putEnt.getBody()).getAsJsonObject();
                         byte[] decodedMsg = Base64.getDecoder().decode(msg64.getAsJsonArray("result").get(1).getAsString());
                         byte[] decryptedMsg = Cripto.decrypt(decodedMsg, p);
+                        clearTextMessage = new String(decryptedMsg);
                         System.err.println("Sender: " + msg64.getAsJsonArray("result").get(0));
-                        System.err.println("Msg: " + new String(decryptedMsg));
+                        System.err.println("Msg: " + clearTextMessage);
                     }
+
+                    body = new JsonObject();
+                    body.addProperty("type", "receipt");
+                    body.addProperty("id", id);
+                    body.addProperty("msg", msgID);
+                    body.addProperty("receipt", Base64.getEncoder().encodeToString(Cripto.sign(p, clearTextMessage.getBytes())));
+                    post(r, URI + "/receipt", body,auth);
                     break;
-                case 9:
+                case 8:
                     id = in.nextInt();
                     in.nextLine();
                     msgID = in.nextLine();
@@ -230,7 +226,7 @@ public class Main {
         System.out.println("5 - List all messages in a user’s message box");
         System.out.println("6 - Send a message to a user’s message box");
         System.out.println("7 - Receive a message from a user's message box");
-        System.out.println("9 - Check the reception status of a sent message");
+        System.out.println("8 - Check the reception status of a sent message");
     }
 
     public static ResponseEntity<Object> post(RestTemplate r,String url,JsonObject body,String auth){
