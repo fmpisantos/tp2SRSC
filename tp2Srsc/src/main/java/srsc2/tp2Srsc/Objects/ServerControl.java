@@ -1,12 +1,15 @@
 package srsc2.tp2Srsc.Objects;
 
 import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.concurrent.ConcurrentSkipListSet;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -178,6 +181,21 @@ class ServerControl {
         }
 
         return user;
+    }
+
+    public boolean createUser(int uuid,String password,String iv) throws Exception {
+        if(!Files.exists(Paths.get("./users"))){
+            new File("./users").mkdir();
+        }
+        if(!Files.exists(Paths.get("./users/"+uuid))){
+            new File("./users/"+uuid);
+            JsonObject j = new JsonObject();
+            j.addProperty("password",password);
+            j.addProperty("iv",iv);
+            saveOnFile("./users/"+uuid,j.toString());
+            return true;
+        }else
+            return false;
     }
 
     synchronized String
@@ -412,6 +430,20 @@ class ServerControl {
         return result + "]}";
     }
 
+    public boolean login(int uuid, String password) throws Exception {
+        JsonObject jsonObject = new JsonParser().parse(readFromFile("./users/"+uuid)).getAsJsonObject();
+        return jsonObject.get("password").getAsString().equals(password);
+    }
+
+    public String getKey(int destID) throws Exception {
+        JsonObject jsonObject = new JsonParser().parse(readFromFile("./mboxes/"+destID+"/description")).getAsJsonObject();
+        return jsonObject.get("key").getAsString();
+    }
+
+    public int getUUID(int id) throws Exception {
+        JsonObject jsonObject = new JsonParser().parse(readFromFile("./mboxes/"+id+"/description")).getAsJsonObject();
+        return jsonObject.get("uuid").getAsInt();
+    }
 }
 
 
