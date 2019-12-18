@@ -74,6 +74,10 @@ public class ServerActions implements Runnable {
         return msg;
     }
 
+    public boolean createUser(int uuid, String password,String iv) throws Exception {
+        return registry.createUser(uuid,password,iv);
+    }
+
     public String
     executeCommand(JsonObject data) {
         JsonElement cmd = data.get( "type" );
@@ -286,5 +290,23 @@ public class ServerActions implements Runnable {
 
     }
 
+    public boolean login(int uuid, String password) throws Exception {
+        return registry.login(uuid,password);
+    }
+
+    public JsonObject getPBKey(int destID) throws Exception {
+        String pbKey = registry.getKey(destID);
+        JsonObject j = new JsonObject();
+        if(pbKey!=null)
+            j.addProperty("key", pbKey);
+        else
+            j.addProperty("error",destID+" message box not created!");
+        return j;
+
+    }
+
+    public int getUUID(int id) throws Exception {
+        return registry.getUUID(id);
+    }
 }
 

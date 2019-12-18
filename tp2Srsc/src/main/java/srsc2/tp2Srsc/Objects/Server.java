@@ -9,7 +9,6 @@ class Server {
     static public void
     waitForClients ( ServerSocket s ) {
         ServerControl registry = new ServerControl();
-
         try {
             while (true) {
                 Socket c = s.accept();
