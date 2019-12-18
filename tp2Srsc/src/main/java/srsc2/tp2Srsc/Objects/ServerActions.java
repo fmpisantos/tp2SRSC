@@ -294,8 +294,19 @@ public class ServerActions implements Runnable {
         return registry.login(uuid,password);
     }
 
-    public byte[] getIV(int uuid) throws Exception {
-        return registry.getIV(uuid);
+    public JsonObject getPBKey(int destID) throws Exception {
+        String pbKey = registry.getKey(destID);
+        JsonObject j = new JsonObject();
+        if(pbKey!=null)
+            j.addProperty("key", pbKey);
+        else
+            j.addProperty("error",destID+" message box not created!");
+        return j;
+
+    }
+
+    public int getUUID(int id) throws Exception {
+        return registry.getUUID(id);
     }
 }
 

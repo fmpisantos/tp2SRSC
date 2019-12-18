@@ -1,6 +1,5 @@
 package srsc2.tp2Srsc.Objects;
 
-import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -10,9 +9,7 @@ import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Base64;
 import java.util.concurrent.ConcurrentSkipListSet;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -435,12 +432,17 @@ class ServerControl {
 
     public boolean login(int uuid, String password) throws Exception {
         JsonObject jsonObject = new JsonParser().parse(readFromFile("./users/"+uuid)).getAsJsonObject();
-        return jsonObject.get("password").equals(password);
+        return jsonObject.get("password").getAsString().equals(password);
     }
 
-    public byte[] getIV(int uuid) throws Exception {
-        JsonObject jsonObject = new JsonParser().parse(readFromFile("./users/"+uuid)).getAsJsonObject();
-        return Base64.getDecoder().decode(String.valueOf(jsonObject.get("iv")).getBytes("UTF-8"));
+    public String getKey(int destID) throws Exception {
+        JsonObject jsonObject = new JsonParser().parse(readFromFile("./mboxes/"+destID+"/description")).getAsJsonObject();
+        return jsonObject.get("key").getAsString();
+    }
+
+    public int getUUID(int id) throws Exception {
+        JsonObject jsonObject = new JsonParser().parse(readFromFile("./mboxes/"+id+"/description")).getAsJsonObject();
+        return jsonObject.get("uuid").getAsInt();
     }
 }
 
