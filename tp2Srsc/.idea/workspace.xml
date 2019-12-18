@@ -1,30 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ffd13b4b-d33e-4f28-b208-663ab8687240" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_activation_javax_activation_api_1_2_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_xml_bind_jaxb_api_2_3_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mboxes/1/_2_1" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/users/2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Cliente/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Cliente/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Cliente/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Cliente/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Cliente/src/main/java/CriptoUtils/Cripto.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Cliente/src/main/java/CriptoUtils/Cripto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Cliente/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Cliente/src/main/java/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Cliente/target/classes/CriptoUtils/Cripto.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Cliente/target/classes/CriptoUtils/Cripto.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Cliente/target/classes/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Cliente/target/classes/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mboxes/1/2_1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mboxes/1/description" beforeDir="false" afterPath="$PROJECT_DIR$/mboxes/1/description" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mboxes/2/description" beforeDir="false" afterPath="$PROJECT_DIR$/mboxes/2/description" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/receipts/2/1_1" beforeDir="false" afterPath="$PROJECT_DIR$/receipts/2/1_1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/srsc2/tp2Srsc/Controllers/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/srsc2/tp2Srsc/Controllers/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/srsc2/tp2Srsc/Crypto/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/srsc2/tp2Srsc/Crypto/Utils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/srsc2/tp2Srsc/Objects/ServerActions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/srsc2/tp2Srsc/Objects/ServerActions.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/srsc2/tp2Srsc/Objects/ServerControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/srsc2/tp2Srsc/Objects/ServerControl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tp2Srsc.iml" beforeDir="false" afterPath="$PROJECT_DIR$/tp2Srsc.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/1" beforeDir="false" afterPath="$PROJECT_DIR$/users/1" afterDir="false" />
-    </list>
+    <list default="true" id="ffd13b4b-d33e-4f28-b208-663ab8687240" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -155,7 +132,7 @@
       <workItem from="1576544141913" duration="5187000" />
       <workItem from="1576595246299" duration="4444000" />
       <workItem from="1576618215169" duration="4006000" />
-      <workItem from="1576625404923" duration="9875000" />
+      <workItem from="1576625404923" duration="10399000" />
     </task>
     <servers />
   </component>
