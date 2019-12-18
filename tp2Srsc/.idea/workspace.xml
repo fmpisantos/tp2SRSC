@@ -2,24 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ffd13b4b-d33e-4f28-b208-663ab8687240" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../~$2-Report-Template.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Cliente/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Cliente/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Cliente/src/main/java/CriptoUtils/Cripto.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Cliente/src/main/java/CriptoUtils/Cripto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Cliente/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Cliente/src/main/java/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Cliente/store/client.jks" beforeDir="false" afterPath="$PROJECT_DIR$/../Cliente/store/client.jks" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Cliente/target/classes/CriptoUtils/Cripto.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Cliente/target/classes/CriptoUtils/Cripto.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Cliente/target/classes/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Cliente/target/classes/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mboxes/1/_2_1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mboxes/1/_2_2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mboxes/1/description" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mboxes/2/description" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/receipts/2/1_1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/receipts/2/1_2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/receipts/2/_1_1_1576641619820" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/receipts/2/_1_1_1576642627470" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/receipts/2/_1_2_1576641813983" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/receipts/2/_1_2_1576641848962" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/2" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -79,7 +69,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Cliente" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -153,6 +143,7 @@
       <workItem from="1576618215169" duration="4006000" />
       <workItem from="1576625404923" duration="14827000" />
       <workItem from="1576682838668" duration="4637000" />
+      <workItem from="1576691700717" duration="1038000" />
     </task>
     <servers />
   </component>

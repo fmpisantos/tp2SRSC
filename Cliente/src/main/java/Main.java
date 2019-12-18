@@ -21,10 +21,8 @@ import org.springframework.web.client.RestTemplate;
 import javax.net.ssl.SSLContext;
 import java.io.File;
 import java.io.FileInputStream;
-import java.math.BigInteger;
 import java.net.http.HttpRequest;
 import java.security.*;
-import java.security.cert.Certificate;
 import java.util.Base64;
 import java.util.Scanner;
 
@@ -55,31 +53,51 @@ public class Main {
         PrivateKey p = null;
         String publicKey = "";
         String auth = "";
-        loginMenu();
-        command = in.nextInt();
-        switch (command){
-            case 0:
-                System.out.println("Enter uuid:");
-                uuid = in.nextInt();
-                in.nextLine();
-                System.out.println("Password:");
-                password = in.nextLine();
-                body.addProperty("uuid",uuid);
-                body.addProperty("password",encryptThisString(password));
-                post(r,URI + "/register", body,"");
-                break;
-            case 1:
-                System.out.println("Enter uuid:");
-                uuid = in.nextInt();
-                in.nextLine();
-                System.out.println("Password:");
-                password = in.nextLine();
-                body.addProperty("uuid",uuid);
-                body.addProperty("password",encryptThisString(password));
-                putEnt = post(r,URI + "/login", body,"");
-                if(putEnt!=null)
-                    auth = putEnt.getHeaders().get("Authorization").get(0);
-                break;
+        boolean flag = true;
+        while(flag) {
+            loginMenu();
+            command = in.nextInt();
+            in.nextLine();
+            switch (command) {
+                case 0:
+                    System.out.println("Enter username:");
+                    username = in.nextLine();
+                    uuid = Base64.getEncoder().encodeToString(generateKeyPair(username, ks, passphrase).getPublic().getEncoded()).hashCode();
+                    System.out.println("Password:");
+                    password = in.nextLine();
+                    body.addProperty("uuid", uuid);
+                    body.addProperty("password", encryptThisString(password));
+                    post(r, URI + "/register", body, "");
+                    break;
+                case 1:
+                    System.out.println("Enter username:");
+                    username = in.nextLine();
+                    System.out.println("Password:");
+                    password = in.nextLine();
+                    try {
+                        p = getPrivate(username, ks, passphrase);
+                        pk = getPublic(username, ks, passphrase);
+                        publicKey = Base64.getEncoder().encodeToString(pk.getEncoded());
+                        uuid = Base64.getEncoder().encodeToString(pk.getEncoded()).hashCode();
+                        body.addProperty("uuid", uuid);
+                        body.addProperty("password", encryptThisString(password));
+                        putEnt = post(r, URI + "/login", body, "");
+                        if (putEnt != null) {
+                            auth = putEnt.getHeaders().get("Authorization").get(0);
+                        }
+                    } catch (Exception e) {
+                        System.err.println(e.getLocalizedMessage());
+                    }
+                    flag = false;
+                    break;
+                case -1:
+                    System.out.println("System Exit!");
+                    flag = false;
+                    break;
+                default:
+                    System.err.println("Wrong Command try again!");
+                    break;
+            }
         }
         while (command != -1) {
             Menu();
@@ -88,9 +106,6 @@ public class Main {
             body = new JsonObject();
             switch (command) {
                 case 0:
-                    System.out.println("Enter uuid:");
-                    uuid = in.nextInt();
-                    in.nextLine();
                     body.addProperty("type", "create");
                     body.addProperty("uuid", uuid);
                     body.addProperty("key", publicKey);
@@ -225,9 +240,11 @@ public class Main {
                     break;
                 case 7:
                     main(new String[]{});
+                    command = -1;
                     break;
                 case -1:
                     System.out.println("System Exit!");
+                    break;
                 default:
                     System.err.println("Wrong Command try again!");
                     break;
@@ -255,6 +272,8 @@ public class Main {
                 .requestFactory(() ->httpComponentsClientHttpRequestFactory);
     }
     public static void loginMenu(){
+        System.out.println("Menu:");
+        System.out.println("-1 - Leave");
         System.out.println("0 - Register");
         System.out.println("1 - Login");
     }
