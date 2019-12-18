@@ -2,16 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ffd13b4b-d33e-4f28-b208-663ab8687240" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/mboxes/1/2_1" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mboxes/1/description" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mboxes/2/description" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/receipts/2/1_1" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/users/1" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/users/2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Cliente/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Cliente/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mboxes/1/_2_1" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mboxes/1/_2_2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/receipts/2/1_2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/receipts/2/_1_1_1576641619820" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/receipts/2/_1_1_1576642627470" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/receipts/2/_1_2_1576641813983" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/receipts/2/_1_2_1576641848962" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Cliente/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Cliente/src/main/java/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Cliente/target/classes/CriptoUtils/Cripto.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Cliente/target/classes/CriptoUtils/Cripto.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Cliente/target/classes/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Cliente/target/classes/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mboxes/1/2_1" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -143,7 +145,7 @@
       <workItem from="1576544141913" duration="5187000" />
       <workItem from="1576595246299" duration="4444000" />
       <workItem from="1576618215169" duration="4006000" />
-      <workItem from="1576625404923" duration="12921000" />
+      <workItem from="1576625404923" duration="14827000" />
     </task>
     <servers />
   </component>

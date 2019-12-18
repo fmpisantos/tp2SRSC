@@ -1,7 +1,3 @@
 Cada cliente tem de gerar uma keypair quando se regista
 
 A quando do login o cliente vai buscar o seu keypair
-
-recibos
-
-assinaturas
