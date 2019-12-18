@@ -70,7 +70,7 @@ public class Main {
                     password = in.nextLine();
                     body.addProperty("uuid",uuid);
                     body.addProperty("password",encryptThisString(password));
-                    putEnt = post(r,URI + "/register", body,"");
+                    post(r,URI + "/register", body,"");
                     break;
                 case 1:
                     System.out.println("Enter uuid:");
@@ -133,7 +133,7 @@ public class Main {
                         JsonObject response = gson.toJsonTree(putEnt.getBody()).getAsJsonObject();
                         byte[] msgEncrypted = Cripto.encrypt(msg.getBytes(), getKey(Base64.getDecoder().decode(response.get("key").getAsString())));
                         body.addProperty("msg", Base64.getEncoder().encodeToString(msgEncrypted));
-                        body.addProperty("copy", Base64.getEncoder().encodeToString(msgEncrypted));
+                        body.addProperty("copy", Base64.getEncoder().encodeToString(Cripto.encrypt(msg.getBytes(), pk)));
                         putEnt = post(r, URI + "/send", body, auth);
                         if (putEnt != null)
                             System.err.println(putEnt.getBody().toString());
@@ -229,8 +229,7 @@ public class Main {
         System.out.println("4 - List all new messages in a user's message box");
         System.out.println("5 - List all messages in a user’s message box");
         System.out.println("6 - Send a message to a user’s message box");
-        System.out.println("7 - Receipt message sent by a client after receiving and validating a message from a message box");
-        System.out.println("8 - Receive a message from a user's message box");
+        System.out.println("7 - Receive a message from a user's message box");
         System.out.println("9 - Check the reception status of a sent message");
     }
 

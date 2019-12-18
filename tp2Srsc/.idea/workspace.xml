@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ffd13b4b-d33e-4f28-b208-663ab8687240" name="Default Changelist" comment="" />
+    <list default="true" id="ffd13b4b-d33e-4f28-b208-663ab8687240" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../Cliente/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Cliente/src/main/java/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mboxes/1/_2_1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mboxes/1/description" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mboxes/2/description" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/receipts/2/1_1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/2" beforeDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -132,7 +141,7 @@
       <workItem from="1576544141913" duration="5187000" />
       <workItem from="1576595246299" duration="4444000" />
       <workItem from="1576618215169" duration="4006000" />
-      <workItem from="1576625404923" duration="10399000" />
+      <workItem from="1576625404923" duration="11537000" />
     </task>
     <servers />
   </component>
