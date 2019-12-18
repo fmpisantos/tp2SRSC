@@ -1,5 +1,7 @@
 import CriptoUtils.Cripto;
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import org.apache.http.conn.ssl.NoopHostnameVerifier;
 import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
@@ -122,6 +124,7 @@ public class Main {
                     System.out.println("Enter destination user id:");
                     int dst = in.nextInt();
                     in.nextLine();
+                    System.out.println("Enter your message:");
                     String msg = in.nextLine();
                     body.addProperty("type", "send");
                     body.addProperty("src", id);
@@ -179,15 +182,38 @@ public class Main {
                     post(r, URI + "/receipt", body,auth);
                     break;
                 case 8:
+                    System.out.println("Enter your user id:");
                     id = in.nextInt();
                     in.nextLine();
+                    System.out.println("Enter message id:");
                     msgID = in.nextLine();
                     body.addProperty("type", "status");
                     body.addProperty("id", id);
                     body.addProperty("msg", msgID);
                     putEnt = post(r, URI + "/status", body,auth);
-                    if(putEnt!=null)
+                    if(putEnt!=null){
+                        JsonObject result = gson.toJsonTree(putEnt.getBody()).getAsJsonObject();
+                        result = result.get("result").getAsJsonObject();
+                        msg = result.get("msg").getAsString();
+                        byte[] msgByteArr = Cripto.decrypt(Base64.getDecoder().decode(msg), p);
+                        result.addProperty("msg",Base64.getEncoder().encodeToString(msgByteArr));
+                        JsonArray arr = result.get("receipts").getAsJsonArray();
+                        arr.forEach((JsonElement rec,int key)->{
+                            JsonObject newJ = rec.getAsJsonObject();
+                            JsonObject bla2 = new JsonObject();
+                            bla2.addProperty("dst", newJ.get("id").getAsString());
+                            ResponseEntity<Object> putEnt2 = post(r, URI + "/destinfo", bla2,"");
+                            Gson gson2 = new Gson();
+                            if(putEnt2!=null) {
+                                JsonObject response = gson2.toJsonTree(putEnt2.getBody()).getAsJsonObject();
+                                byte[] msgEncrypted = Cripto.encrypt(msg.getBytes(), getKey(Base64.getDecoder().decode(response.get("key").getAsString())));
+                                if(!verifySignature(getKey(Base64.getDecoder().decode(response.get("key").getAsString()),newJ.get("receipt").getAsString(),msgByteArr))
+                                    arr.remove(key);
+                            }
+                        });
+
                         System.err.println(putEnt.getBody().toString());
+                    }
                     break;
                 default:
                     System.err.println("Wrong Command try again!");
