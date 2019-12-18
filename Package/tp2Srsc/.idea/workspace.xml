@@ -2,13 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ffd13b4b-d33e-4f28-b208-663ab8687240" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../~$2-Report-Template.docx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Cliente/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Cliente/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Cliente/src/main/java/CriptoUtils/Cripto.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Cliente/src/main/java/CriptoUtils/Cripto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Cliente/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Cliente/src/main/java/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Cliente/store/client.jks" beforeDir="false" afterPath="$PROJECT_DIR$/../Cliente/store/client.jks" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Cliente/target/classes/CriptoUtils/Cripto.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Cliente/target/classes/CriptoUtils/Cripto.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Cliente/target/classes/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Cliente/target/classes/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Cliente/.idea/$PRODUCT_WORKSPACE_FILE$" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Cliente/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Cliente/.idea/Cliente.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Cliente/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Cliente/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Cliente/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Cliente/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Cliente/src/main/java/CriptoUtils/Cripto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Cliente/src/main/java/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Cliente/store/client.cer" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Cliente/store/client.jks" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Cliente/store/client.jks.old" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Cliente/store/clientPk.pfx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Cliente/store/clientbase64.cer" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Cliente/store/clientselfcertificate.jks" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Cliente/store/clientselfcertificate.jks.old" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Cliente/store/trustedstore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Cliente/target/classes/CriptoUtils/Cripto.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Cliente/target/classes/Main.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -144,6 +156,7 @@
       <workItem from="1576625404923" duration="14827000" />
       <workItem from="1576682838668" duration="4637000" />
       <workItem from="1576691700717" duration="1038000" />
+      <workItem from="1576693186966" duration="510000" />
     </task>
     <servers />
   </component>
