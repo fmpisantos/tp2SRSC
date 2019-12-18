@@ -46,14 +46,12 @@ public class Main {
         int id;
         int uuid;
         String password;
-        String privateKey;
         String publicKey;
         KeyStore ks;
         char[] passphrase = "queremosovinte".toCharArray();
         ks = KeyStore.getInstance("JKS");
         ks.load(new FileInputStream("./store/client.jks"), passphrase);
         PrivateKey p = (PrivateKey) ks.getKey("client", passphrase);
-        privateKey = new String(p.getEncoded());
         Certificate cert = ks.getCertificate("client");
         PublicKey pk = cert.getPublicKey();
         publicKey = Base64.getEncoder().encodeToString(pk.getEncoded());
