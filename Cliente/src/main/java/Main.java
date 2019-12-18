@@ -1,5 +1,7 @@
 import CriptoUtils.Cripto;
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import org.apache.http.conn.ssl.NoopHostnameVerifier;
 import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
@@ -20,15 +22,12 @@ import javax.net.ssl.SSLContext;
 import java.io.File;
 import java.io.FileInputStream;
 import java.net.http.HttpRequest;
-import java.security.KeyStore;
-import java.security.PrivateKey;
-import java.security.PublicKey;
+import java.security.*;
 import java.security.cert.Certificate;
 import java.util.Base64;
 import java.util.Scanner;
 
-import static CriptoUtils.Cripto.encryptThisString;
-import static CriptoUtils.Cripto.getKey;
+import static CriptoUtils.Cripto.*;
 
 public class Main {
 
@@ -122,6 +121,7 @@ public class Main {
                     System.out.println("Enter destination user id:");
                     int dst = in.nextInt();
                     in.nextLine();
+                    System.out.println("Enter your message:");
                     String msg = in.nextLine();
                     body.addProperty("type", "send");
                     body.addProperty("src", id);
@@ -167,7 +167,7 @@ public class Main {
                         byte[] decodedMsg = Base64.getDecoder().decode(msg64.getAsJsonArray("result").get(1).getAsString());
                         byte[] decryptedMsg = Cripto.decrypt(decodedMsg, p);
                         clearTextMessage = new String(decryptedMsg);
-                        System.err.println("Sender: " + msg64.getAsJsonArray("result").get(0));
+                        System.err.println("Sender: " + msg64.getAsJsonArray("result").get(0).getAsInt());
                         System.err.println("Msg: " + clearTextMessage);
                     }
 
@@ -179,15 +179,45 @@ public class Main {
                     post(r, URI + "/receipt", body,auth);
                     break;
                 case 8:
+                    System.out.println("Enter your user id:");
                     id = in.nextInt();
                     in.nextLine();
+                    System.out.println("Enter message id:");
                     msgID = in.nextLine();
                     body.addProperty("type", "status");
                     body.addProperty("id", id);
                     body.addProperty("msg", msgID);
                     putEnt = post(r, URI + "/status", body,auth);
-                    if(putEnt!=null)
-                        System.err.println(putEnt.getBody().toString());
+                    if(putEnt!=null){
+                        JsonObject result = gson.toJsonTree(putEnt.getBody()).getAsJsonObject();
+                        result = result.get("result").getAsJsonObject();
+                        msg = result.get("msg").getAsString();
+                        byte[] msgByteArr = Cripto.decrypt(Base64.getDecoder().decode(msg), p);
+                        result.addProperty("msg",Base64.getEncoder().encodeToString(msgByteArr));
+                        JsonArray arr = result.get("receipts").getAsJsonArray();
+                        arr.forEach((JsonElement rec)->{
+                            JsonObject newJ = rec.getAsJsonObject();
+                            JsonObject bla2 = new JsonObject();
+                            bla2.addProperty("dst", newJ.get("id").getAsInt());
+                            ResponseEntity<Object> putEnt2 = post(r, URI + "/destinfo", bla2,"");
+                            Gson gson2 = new Gson();
+                            if(putEnt2!=null) {
+                                JsonObject response = gson2.toJsonTree(putEnt2.getBody()).getAsJsonObject();
+                                try {
+                                    if(!verifySignature(getKey(Base64.getDecoder().decode(response.get("key").getAsString())),Base64.getDecoder().decode(newJ.get("receipt").getAsString()),msgByteArr))
+                                        arr.remove(rec);
+                                } catch (InvalidKeyException e) {
+                                    e.printStackTrace();
+                                } catch (SignatureException e) {
+                                    e.printStackTrace();
+                                } catch (NoSuchAlgorithmException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        });
+                        result.add("receipts",arr);
+                        System.err.println(result);
+                    }
                     break;
                 default:
                     System.err.println("Wrong Command try again!");
