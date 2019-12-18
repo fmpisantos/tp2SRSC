@@ -37,7 +37,7 @@ public class Main {
         RestTemplate r = restTemplateBuilder().build();
         Scanner in = new Scanner(System.in);
         int command = 0;
-        JsonObject body;
+        JsonObject body = new JsonObject();
         HttpRequest req;
         ResponseEntity<Object> putEnt;
         Gson gson = new Gson();
@@ -55,6 +55,32 @@ public class Main {
         PublicKey pk = cert.getPublicKey();
         publicKey = Base64.getEncoder().encodeToString(pk.getEncoded());
         String auth = "";
+        loginMenu();
+        command = in.nextInt();
+        switch (command){
+            case 0:
+                System.out.println("Enter uuid:");
+                uuid = in.nextInt();
+                in.nextLine();
+                System.out.println("Password:");
+                password = in.nextLine();
+                body.addProperty("uuid",uuid);
+                body.addProperty("password",encryptThisString(password));
+                post(r,URI + "/register", body,"");
+                break;
+            case 1:
+                System.out.println("Enter uuid:");
+                uuid = in.nextInt();
+                in.nextLine();
+                System.out.println("Password:");
+                password = in.nextLine();
+                body.addProperty("uuid",uuid);
+                body.addProperty("password",encryptThisString(password));
+                putEnt = post(r,URI + "/login", body,"");
+                if(putEnt!=null)
+                    auth = putEnt.getHeaders().get("Authorization").get(0);
+                break;
+        }
         while (command != -1) {
             Menu();
             command = in.nextInt();
@@ -65,28 +91,6 @@ public class Main {
                     System.out.println("Enter uuid:");
                     uuid = in.nextInt();
                     in.nextLine();
-                    System.out.println("Password:");
-                    password = in.nextLine();
-                    body.addProperty("uuid",uuid);
-                    body.addProperty("password",encryptThisString(password));
-                    post(r,URI + "/register", body,"");
-                    break;
-                case 1:
-                    System.out.println("Enter uuid:");
-                    uuid = in.nextInt();
-                    in.nextLine();
-                    System.out.println("Password:");
-                    password = in.nextLine();
-                    body.addProperty("uuid",uuid);
-                    body.addProperty("password",encryptThisString(password));
-                    putEnt = post(r,URI + "/login", body,"");
-                    if(putEnt!=null)
-                        auth = putEnt.getHeaders().get("Authorization").get(0);
-                    break;
-                case 2:
-                    System.out.println("Enter uuid:");
-                    uuid = in.nextInt();
-                    in.nextLine();
                     body.addProperty("type", "create");
                     body.addProperty("uuid", uuid);
                     body.addProperty("key", publicKey);
@@ -94,7 +98,7 @@ public class Main {
                     if(putEnt!=null)
                         System.err.println(putEnt.getBody().toString());
                     break;
-                case 3:
+                case 1:
                     System.out.println("Enter user id:");
                     id = in.nextInt();
                     in.nextLine();
@@ -104,7 +108,7 @@ public class Main {
                     if(putEnt!=null)
                         System.err.println(putEnt.getBody().toString());
                     break;
-                case 5:
+                case 2:
                     System.out.println("Enter user id:");
                     id = in.nextInt();
                     in.nextLine();
@@ -114,7 +118,7 @@ public class Main {
                     if(putEnt!=null)
                         System.err.println(putEnt.getBody().toString());
                     break;
-                case 6:
+                case 3:
                     System.out.println("Enter your user id:");
                     id = in.nextInt();
                     in.nextLine();
@@ -149,7 +153,7 @@ public class Main {
                     if(putEnt!=null)
                     System.err.println(putEnt.getBody().toString());
                     break;
-                case 7:
+                case 5:
                     System.out.println("Enter user id:");
                     id = in.nextInt();
                     in.nextLine();
@@ -178,7 +182,7 @@ public class Main {
                     body.addProperty("receipt", Base64.getEncoder().encodeToString(Cripto.sign(p, clearTextMessage.getBytes())));
                     post(r, URI + "/receipt", body,auth);
                     break;
-                case 8:
+                case 6:
                     System.out.println("Enter your user id:");
                     id = in.nextInt();
                     in.nextLine();
@@ -219,6 +223,9 @@ public class Main {
                         System.err.println(result);
                     }
                     break;
+                case 7:
+                    main(new String[]{});
+                    break;
                 default:
                     System.err.println("Wrong Command try again!");
                     break;
@@ -244,19 +251,21 @@ public class Main {
                 .additionalMessageConverters( new ResourceHttpMessageConverter() )
                 .requestFactory(() ->httpComponentsClientHttpRequestFactory);
     }
-
+    public static void loginMenu(){
+        System.out.println("0 - Register");
+        System.out.println("1 - Login");
+    }
     public static void Menu(){
         System.out.println("Menu:");
         System.out.println("-1 - Leave");
-        System.out.println("0 - Register");
-        System.out.println("1 - Login");
-        System.out.println("2 - Create Message box");
-        System.out.println("3 - List users with a message box");
-        System.out.println("4 - List all new messages in a user's message box");
-        System.out.println("5 - List all messages in a user’s message box");
-        System.out.println("6 - Send a message to a user’s message box");
-        System.out.println("7 - Receive a message from a user's message box");
-        System.out.println("8 - Check the reception status of a sent message");
+        System.out.println("0 - Create Message box");
+        System.out.println("1 - List users with a message box");
+        System.out.println("2 - List all new messages in a user's message box");
+        System.out.println("3 - List all messages in a user’s message box");
+        System.out.println("4 - Send a message to a user’s message box");
+        System.out.println("5 - Receive a message from a user's message box");
+        System.out.println("6 - Check the reception status of a sent message");
+        System.out.println("7 - Logout");
     }
 
     public static ResponseEntity<Object> post(RestTemplate r,String url,JsonObject body,String auth){
