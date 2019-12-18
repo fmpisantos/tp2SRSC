@@ -1,28 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ffd13b4b-d33e-4f28-b208-663ab8687240" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../Cliente/.idea/$PRODUCT_WORKSPACE_FILE$" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Cliente/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Cliente/.idea/Cliente.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Cliente/.idea/compiler.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Cliente/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Cliente/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Cliente/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Cliente/src/main/java/CriptoUtils/Cripto.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Cliente/src/main/java/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Cliente/store/client.cer" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Cliente/store/client.jks" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Cliente/store/client.jks.old" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Cliente/store/clientPk.pfx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Cliente/store/clientbase64.cer" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Cliente/store/clientselfcertificate.jks" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Cliente/store/clientselfcertificate.jks.old" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Cliente/store/trustedstore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Cliente/target/classes/CriptoUtils/Cripto.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Cliente/target/classes/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="ffd13b4b-d33e-4f28-b208-663ab8687240" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,7 +30,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
   <component name="IgnoredFileRootStore">
     <option name="generatedRoots">
@@ -88,19 +67,21 @@
     <property name="settings.editor.selected.configurable" value="terminal" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\pipas\Desktop\Faculdade\4ºANO\SRSC\Projecto 2\tp2Srsc" />
+      <recent name="C:\Users\pipas\Desktop\Faculdade\4ºANO\SRSC\Projecto 2\tp2Srsc\src\main\resources" />
+    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="srsc2.tp2Srsc" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\pipas\Desktop\Faculdade\4ºANO\SRSC\Projecto 2\tp2Srsc\src\main" />
-      <recent name="C:\Users\pipas\Desktop\Faculdade\4ºANO\SRSC\Projecto 2\tp2Srsc\src\main\java\srsc2\tp2Srsc\Controllers" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="srsc2.tp2Srsc.Controllers" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\pipas\Desktop\Faculdade\4ºANO\SRSC\Projecto 2\tp2Srsc" />
-      <recent name="C:\Users\pipas\Desktop\Faculdade\4ºANO\SRSC\Projecto 2\tp2Srsc\src\main\resources" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\pipas\Desktop\Faculdade\4ºANO\SRSC\Projecto 2\Package\tp2Srsc" />
+      <recent name="C:\Users\pipas\Desktop\Faculdade\4ºANO\SRSC\Projecto 2\Package\tp2Srsc\target" />
+      <recent name="C:\Users\pipas\Desktop\Faculdade\4ºANO\SRSC\Projecto 2\tp2Srsc\src\main" />
+      <recent name="C:\Users\pipas\Desktop\Faculdade\4ºANO\SRSC\Projecto 2\tp2Srsc\src\main\java\srsc2\tp2Srsc\Controllers" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -115,7 +96,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JAR Application.Unnamed">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="srsc2.tp2Srsc.Main" />
       <module name="tp2Srsc" />
@@ -129,6 +110,33 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Unnamed" type="JarApplication" nameIsGenerated="true">
+      <option name="JAR_PATH" value="$PROJECT_DIR$/target/tp2Srsc-0.0.1-SNAPSHOT.jar" />
+      <option name="WORKING_DIRECTORY" value="C:\Users\pipas\Desktop\Faculdade\4ºANO\SRSC\Projecto 2\Package\tp2Srsc" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="ALTERNATIVE_JRE_PATH" value="11" />
+      <module name="tp2Srsc" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="JarApplication">
+      <option name="JAR_PATH" value="$PROJECT_DIR$/target/tp2Srsc-0.0.1-SNAPSHOT.jar" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="ALTERNATIVE_JRE_PATH" value="11" />
+      <module name="tp2Srsc" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Main" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="tp2Srsc" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="srsc2.tp2Srsc.Main" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.Main" />
+      <item itemvalue="JAR Application.Unnamed" />
+      <item itemvalue="Spring Boot.Main" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
@@ -157,6 +165,8 @@
       <workItem from="1576682838668" duration="4637000" />
       <workItem from="1576691700717" duration="1038000" />
       <workItem from="1576693186966" duration="510000" />
+      <workItem from="1576694336884" duration="2834000" />
+      <workItem from="1576697242416" duration="410000" />
     </task>
     <servers />
   </component>
