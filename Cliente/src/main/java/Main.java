@@ -21,6 +21,7 @@ import org.springframework.web.client.RestTemplate;
 import javax.net.ssl.SSLContext;
 import java.io.File;
 import java.io.FileInputStream;
+import java.math.BigInteger;
 import java.net.http.HttpRequest;
 import java.security.*;
 import java.security.cert.Certificate;
@@ -43,17 +44,16 @@ public class Main {
         Gson gson = new Gson();
         String msgID;
         int id;
-        int uuid;
-        String password;
-        String publicKey;
+        int uuid = -1;
         KeyStore ks;
         char[] passphrase = "queremosovinte".toCharArray();
         ks = KeyStore.getInstance("JKS");
         ks.load(new FileInputStream("./store/client.jks"), passphrase);
-        PrivateKey p = (PrivateKey) ks.getKey("client", passphrase);
-        Certificate cert = ks.getCertificate("client");
-        PublicKey pk = cert.getPublicKey();
-        publicKey = Base64.getEncoder().encodeToString(pk.getEncoded());
+        String password;
+        String username="";
+        PublicKey pk = null;
+        PrivateKey p = null;
+        String publicKey = "";
         String auth = "";
         loginMenu();
         command = in.nextInt();
@@ -226,11 +226,14 @@ public class Main {
                 case 7:
                     main(new String[]{});
                     break;
+                case -1:
+                    System.out.println("System Exit!");
                 default:
                     System.err.println("Wrong Command try again!");
                     break;
             }
         }
+        ks.store(new java.io.FileOutputStream("./store/client.jks"), passphrase);
     }
 
     private static RestTemplateBuilder restTemplateBuilder () throws Exception {
